@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>情人节快乐</title>
+    <style>
+        /* 页面整体背景和渐变效果 */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #FFB6C1, #FF1493); /* 渐变背景 */
+            color: #fff;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+            position: relative;
+        }
+
+        /* 标题样式，增加渐变文字效果 */
+        h1 {
+            font-size: 4em;
+            background: -webkit-linear-gradient(left, #FF4081, #FF1493);
+            -webkit-background-clip: text;
+            color: transparent;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        /* 祝福语样式 */
+        p {
+            font-size: 1.5em;
+            margin: 20px 0;
+            font-weight: 600;
+            animation: fadeIn 3s ease-in-out;
+        }
+
+        /* 心形图标 */
+        .heart {
+            font-size: 6em;
+            color: red;
+            animation: pulse 1.5s infinite ease-in-out;
+            margin-bottom: 20px;
+        }
+
+        /* 按钮样式 */
+        .button {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: #FF1493;
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-size: 1.2em;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+
+        /* 按钮悬停效果 */
+        .button:hover {
+            background-color: #ff4081;
+        }
+
+        /* 动画效果：文字渐显 */
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        /* 动画效果：心形跳动 */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        /* 背景图片装饰 */
+        .heart-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('https://source.unsplash.com/1600x900/?valentine,heart');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.2;
+            z-index: -1;
+        }
+
+        /* 雪花效果 */
+        .snowflake {
+            position: absolute;
+            top: -10px;
+            pointer-events: none;
+            font-size: 2em;
+            color: #fff;
+            user-select: none;
+            animation: fall 10s linear infinite;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 背景图片 -->
+    <div class="heart-background"></div>
+
+    <h1>自己填，情人节快乐！</h1>
+    <p>愿你永远幸福，每一天都开心。</p>
+
+    <div class="heart">❤️</div>
+
+    <!-- 点击后触发效果的按钮 -->
+    <button class="button" id="loveButton">快点我！！！</button>
+
+    <script>
+        // 当点击按钮时，生成雪花
+        document.getElementById("loveButton").onclick = function() {
+            // 创建雪花元素
+            for (let i = 0; i < 30; i++) {
+                let snowflake = document.createElement("div");
+                snowflake.classList.add("snowflake");
+                snowflake.style.left = Math.random() * 100 + "%"; // 随机横向位置
+                snowflake.style.animationDuration = Math.random() * 5 + 5 + "s"; // 随机下落速度
+                snowflake.innerHTML = "❄️"; // 雪花图标
+                document.body.appendChild(snowflake);
+
+                // 动画结束后删除雪花
+                setTimeout(function() {
+                    snowflake.remove();
+                }, 10000); // 10秒后移除雪花
+            }
+        };
+    </script>
+
+</body>
+</html>
