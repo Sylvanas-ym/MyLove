@@ -18,6 +18,7 @@
             align-items: center;
             flex-direction: column;
             text-align: center;
+            position: relative;
         }
 
         /* 标题样式，增加渐变文字效果 */
@@ -57,6 +58,7 @@
             margin-top: 20px;
             transition: background-color 0.3s ease;
             text-transform: uppercase;
+            cursor: pointer;
         }
 
         /* 按钮悬停效果 */
@@ -91,6 +93,32 @@
             z-index: -1;
         }
 
+        /* 按钮点击后显示的心形动画 */
+        .heart-explosion {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: none;
+            font-size: 10em;
+            color: red;
+            animation: explode 1s ease-out forwards;
+        }
+
+        @keyframes explode {
+            0% {
+                transform: scale(1) rotate(0);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(3) rotate(180deg);
+                opacity: 0.7;
+            }
+            100% {
+                transform: scale(5) rotate(360deg);
+                opacity: 0;
+            }
+        }
     </style>
 </head>
 <body>
@@ -99,12 +127,28 @@
     <div class="heart-background"></div>
 
     <h1>雪凡宝贝，情人节快乐！</h1>
-    <p>愿你你永远幸福，每一天都开心。</p>
+    <p>愿你永远幸福，每一天都开心。</p>
 
     <div class="heart">❤️</div>
 
-    <!-- 可点击的按钮，可以自定义邮箱发送或其他链接 -->
-    <a href="mailto:your-girlfriend-email@example.com?subject=情人节快乐" class="button">发个爱心</a>
+    <!-- 点击后触发效果的按钮 -->
+    <button class="button" id="loveButton">给我宝贝一个爱心</button>
+
+    <!-- 心形爆炸效果 -->
+    <div class="heart-explosion" id="heartExplosion">❤️</div>
+
+    <script>
+        document.getElementById("loveButton").onclick = function() {
+            // 显示心形爆炸动画
+            var heartExplosion = document.getElementById("heartExplosion");
+            heartExplosion.style.display = "block";
+
+            // 动画结束后隐藏
+            setTimeout(function() {
+                heartExplosion.style.display = "none";
+            }, 1000);  // 1秒后隐藏动画
+        };
+    </script>
 
 </body>
 </html>
