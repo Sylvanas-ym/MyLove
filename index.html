@@ -93,30 +93,20 @@
             z-index: -1;
         }
 
-        /* 按钮点击后显示的心形动画 */
-        .heart-explosion {
+        /* 雪花效果 */
+        .snowflake {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            display: none;
-            font-size: 10em;
-            color: red;
-            animation: explode 1s ease-out forwards;
+            top: -10px;
+            pointer-events: none;
+            font-size: 2em;
+            color: #fff;
+            user-select: none;
+            animation: fall 10s linear infinite;
         }
 
-        @keyframes explode {
-            0% {
-                transform: scale(1) rotate(0);
-                opacity: 1;
-            }
-            50% {
-                transform: scale(3) rotate(180deg);
-                opacity: 0.7;
-            }
-            100% {
-                transform: scale(5) rotate(360deg);
-                opacity: 0;
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
             }
         }
     </style>
@@ -134,19 +124,23 @@
     <!-- 点击后触发效果的按钮 -->
     <button class="button" id="loveButton">快点我！！！</button>
 
-    <!-- 心形爆炸效果 -->
-    <div class="heart-explosion" id="heartExplosion">❤️</div>
-
     <script>
+        // 当点击按钮时，生成雪花
         document.getElementById("loveButton").onclick = function() {
-            // 显示心形爆炸动画
-            var heartExplosion = document.getElementById("heartExplosion");
-            heartExplosion.style.display = "block";
+            // 创建雪花元素
+            for (let i = 0; i < 30; i++) {
+                let snowflake = document.createElement("div");
+                snowflake.classList.add("snowflake");
+                snowflake.style.left = Math.random() * 100 + "%"; // 随机横向位置
+                snowflake.style.animationDuration = Math.random() * 5 + 5 + "s"; // 随机下落速度
+                snowflake.innerHTML = "❄️"; // 雪花图标
+                document.body.appendChild(snowflake);
 
-            // 动画结束后隐藏
-            setTimeout(function() {
-                heartExplosion.style.display = "none";
-            }, 3000);  // 3秒后隐藏动画
+                // 动画结束后删除雪花
+                setTimeout(function() {
+                    snowflake.remove();
+                }, 10000); // 10秒后移除雪花
+            }
         };
     </script>
 
