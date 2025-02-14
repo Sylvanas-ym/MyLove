@@ -5,44 +5,106 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>情人节快乐</title>
     <style>
+        /* 页面整体背景和渐变效果 */
         body {
             font-family: 'Arial', sans-serif;
-            background: #f8e0e6;
-            text-align: center;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #FFB6C1, #FF1493); /* 渐变背景 */
             color: #fff;
-            padding: 50px;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
         }
+
+        /* 标题样式，增加渐变文字效果 */
         h1 {
-            font-size: 3em;
-            color: #ff4081;
+            font-size: 4em;
+            background: -webkit-linear-gradient(left, #FF4081, #FF1493);
+            -webkit-background-clip: text;
+            color: transparent;
+            animation: fadeIn 2s ease-in-out;
         }
+
+        /* 祝福语样式 */
         p {
             font-size: 1.5em;
+            margin: 20px 0;
+            font-weight: 600;
+            animation: fadeIn 3s ease-in-out;
         }
+
+        /* 心形图标 */
         .heart {
-            font-size: 5em;
+            font-size: 6em;
             color: red;
+            animation: pulse 1.5s infinite ease-in-out;
+            margin-bottom: 20px;
         }
+
+        /* 按钮样式 */
         .button {
             display: inline-block;
             padding: 15px 30px;
-            background-color: #ff4081;
+            background-color: #FF1493;
             color: white;
             text-decoration: none;
             border-radius: 10px;
-            margin-top: 20px;
             font-size: 1.2em;
-            transition: background-color 0.3s;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+            text-transform: uppercase;
         }
+
+        /* 按钮悬停效果 */
         .button:hover {
-            background-color: #f50057;
+            background-color: #ff4081;
         }
+
+        /* 动画效果：文字渐显 */
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        /* 动画效果：心形跳动 */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        /* 背景图片装饰 */
+        .heart-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('https://source.unsplash.com/1600x900/?valentine,heart');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.2;
+            z-index: -1;
+        }
+
     </style>
 </head>
 <body>
+
+    <!-- 背景图片 -->
+    <div class="heart-background"></div>
+
     <h1>雪凡宝贝，情人节快乐！</h1>
     <p>你是我最重要的人，希望你永远幸福，每一天都充满爱。</p>
+
     <div class="heart">❤️</div>
-    <a href="mailto:your-girlfriend-email@example.com?subject=情人节快乐" class="button">给我女朋友发个爱心</a>
+
+    <!-- 可点击的按钮，可以自定义邮箱发送或其他链接 -->
+    <a href="mailto:your-girlfriend-email@example.com?subject=情人节快乐" class="button">发个爱心</a>
+
 </body>
 </html>
